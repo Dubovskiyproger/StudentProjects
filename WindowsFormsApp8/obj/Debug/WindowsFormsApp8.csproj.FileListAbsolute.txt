@@ -1,0 +1,10 @@
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.exe.config
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.exe
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.pdb
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csproj.AssemblyReference.cache
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.Form1.resources
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.Properties.Resources.resources
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csproj.GenerateResource.cache
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csproj.CoreCompileInputs.cache
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.exe
+D:\Поликек младший\3 курс\6-й семестр\УП\2 часть\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.pdb
