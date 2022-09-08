@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abonents">
+    <Key>
+      <PropertyRef Name="AbIndex" />
+    </Key>
+    <Property Name="AbIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nchar" MaxLength="50" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+    <Property Name="Middlename" Type="nchar" MaxLength="50" />
+    <Property Name="AddIndex" Type="int" Nullable="false" />
+    <Property Name="Telephone" Type="nchar" MaxLength="50" />
+    <Property Name="OrgIndex" Type="int" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddIndex" />
+    </Key>
+    <Property Name="AddIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityIndex" Type="int" />
+    <Property Name="VillageIndex" Type="int" />
+    <Property Name="Street" Type="nchar" MaxLength="50" />
+    <Property Name="House" Type="nchar" MaxLength="50" />
+    <Property Name="Flat" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityIndex" />
+    </Key>
+    <Property Name="CityIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrgIndex" />
+    </Key>
+    <Property Name="OrgIndex" Type="int" Nullable="false" />
+    <Property Name="OrganizationName" Type="nchar" MaxLength="50" />
+    <Property Name="Address" Type="int" />
+    <Property Name="Telephone" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Village">
+    <Key>
+      <PropertyRef Name="VillageIndex" />
+    </Key>
+    <Property Name="VillageIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VillageName" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Abonents_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Abonents" Type="Self.Abonents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddIndex" />
+      </Principal>
+      <Dependent Role="Abonents">
+        <PropertyRef Name="AddIndex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Abonents_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+    <End Role="Abonents" Type="Self.Abonents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrgIndex" />
+      </Principal>
+      <Dependent Role="Abonents">
+        <PropertyRef Name="OrgIndex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Address_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityIndex" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CityIndex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Address_Village">
+    <End Role="Village" Type="Self.Village" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Village">
+        <PropertyRef Name="VillageIndex" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="VillageIndex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organization_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddIndex" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ModelContainer">
+    <EntitySet Name="Abonents" EntityType="Self.Abonents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Village" EntityType="Self.Village" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Abonents_Address" Association="Self.FK_Abonents_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Abonents" EntitySet="Abonents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Abonents_Organization" Association="Self.FK_Abonents_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Abonents" EntitySet="Abonents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Address_City" Association="Self.FK_Address_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Address_Village" Association="Self.FK_Address_Village">
+      <End Role="Village" EntitySet="Village" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_Address" Association="Self.FK_Organization_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Organization" EntitySet="Organization" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
